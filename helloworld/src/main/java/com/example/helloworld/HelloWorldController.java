@@ -29,6 +29,12 @@ public class HelloWorldController {
         return responseChina;
     }
 
+    @GetMapping("/us")
+    public Object us() {
+        String responseUs = "ようこそアメリカへ";
+        return responseUs;
+    }
+
     @GetMapping("/time")
     public Object japanTime() {
         LocalDateTime nowDate = LocalDateTime.now();
@@ -41,6 +47,8 @@ public class HelloWorldController {
 
 
 }
+
+
 
 
 
