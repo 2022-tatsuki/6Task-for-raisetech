@@ -1,10 +1,12 @@
 package com.example.helloworld;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 @RestController
 public class HelloWorldController {
@@ -15,24 +17,22 @@ public class HelloWorldController {
         return message;
     }
 
-    @GetMapping("/japan")
-    public Object japan() {
-        String responseJapan = "ようこそ　日本へ";
-        return responseJapan;
+   @GetMapping("/greeting")
+   public String worldGreeting(
+           @RequestParam(name="country",value ="country",defaultValue = "none",required = false)String country)
+    {
+        String greeting="Hello world";
 
-
-    }
-
-    @GetMapping("/china")
-    public Object china() {
-        String responseChina = "ようこそ　中国へ";
-        return responseChina;
-    }
-
-    @GetMapping("/us")
-    public Object us() {
-        String responseUs = "ようこそアメリカへ";
-        return responseUs;
+        if (Objects.equals(country,"japan")){
+            greeting="こんにちわ";
+        }else if (Objects.equals(country,"us")){
+            greeting="hello";
+        }else if (Objects.equals(country,"france")){
+            greeting="Bonjour";
+        }else if (Objects.equals(country,"italy")){
+            greeting="Ciao";
+        }
+        return greeting;
     }
 
     @GetMapping("/time")
@@ -47,8 +47,6 @@ public class HelloWorldController {
 
 
 }
-
-
 
 
 
