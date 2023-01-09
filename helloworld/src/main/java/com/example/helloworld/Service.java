@@ -1,7 +1,7 @@
 package com.example.helloworld;
 
 
-@org.springframework.stereotype.Service
+@Service
 public class Service {
 
     public String worldGreeting(String country) {
