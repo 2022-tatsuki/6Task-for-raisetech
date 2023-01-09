@@ -35,7 +35,7 @@ public class HelloWorldController {
 
 
     @GetMapping("/greeting")
-    public String greetingMethod(@RequestParam(value = "country", defaultValue = "japan") String country) {
+    public String greet(@RequestParam(value = "country", defaultValue = "japan") String country) {
 
         return service.worldGreeting(country);
     }
