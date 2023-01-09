@@ -1,6 +1,5 @@
 package com.example.helloworld;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,9 +7,16 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
 @RestController
 public class HelloWorldController {
-    @Autowired
+    private final Service service;
+
+
+    public HelloWorldController(Service service) {
+        this.service = service;
+    }
+
 
     @GetMapping("/hello")
     public String hello() {
@@ -29,10 +35,17 @@ public class HelloWorldController {
 
 
     @GetMapping("/greeting")
-    public String response(@RequestParam(value = "country", defaultValue = "japan") String country) {
+    public String getService(@RequestParam(value = "country", defaultValue = "japan") String country) {
 
-        return Service.worldGreeting(country);
+        return service.worldGreeting(country);
     }
+
+
+}
+
+
+
+
 
 }
 
